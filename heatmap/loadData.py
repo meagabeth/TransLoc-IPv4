@@ -35,3 +35,16 @@ with open('test.csv') as csv_file:
         else:
             line_count += 1
     print(f'Processed {line_count} lines.')
+    # col_num = 0
+    # for column in row:
+    #   if col_num == 1:
+    #     print(f'Column contains {column}')
+    #     col_num += 1
+    #   else: 
+    #     col_num += 1
+    # print(column[1])
+
+with open('test.csv') as test:
+  reader = csv.DictReader(test)
+  for row in reader:
+    print(row)
