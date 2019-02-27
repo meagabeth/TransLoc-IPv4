@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from heatmap.models import location
+from heatmap.models import Location
 
-class locationSerializer(serializers.ModelSerializer):
+class LocationSerializer(serializers.ModelSerializer):
   class Meta:
-    model = location
-    fields = (`latitude`, `longitude`)
+    model = Location
+    fields = ('latitude', 'longitude')
