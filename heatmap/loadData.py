@@ -24,17 +24,18 @@
 # conn.commit()
 
 import csv
+import json
 
-with open('test.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
-    for row in csv_reader:
-        if line_count == 1:
-            print(f'Column names are {", ".join(row)}')
-            line_count += 1
-        else:
-            line_count += 1
-    print(f'Processed {line_count} lines.')
+# with open('test.csv') as csv_file:
+#     csv_reader = csv.reader(csv_file, delimiter=',')
+#     line_count = 0
+#     for row in csv_reader:
+#         if line_count == 1:
+#             print(f'Column names are {", ".join(row)}')
+#             line_count += 1
+#         else:
+#             line_count += 1
+#     print(f'Processed {line_count} lines.')
     # col_num = 0
     # for column in row:
     #   if col_num == 1:
@@ -44,7 +45,20 @@ with open('test.csv') as csv_file:
     #     col_num += 1
     # print(column[1])
 
+lat_list = []
+
 with open('test.csv') as test:
-  reader = csv.DictReader(test)
-  for row in reader:
-    print(row)
+  reader = csv.reader(test)
+  for eachline in reader:
+    lat_list.append(eachline)
+
+print(lat_list[2])
+
+csvfile = open('test.csv', 'r')
+jsonfile = open('test.json', 'w')
+
+fieldnames = ("IPnetwork", "col2", "col3", "col4")
+read = csv.DictReader(csvfile, fieldnames)
+for line in read:
+  json.dump(line, jsonfile)
+  jsonfile.write('/n')
