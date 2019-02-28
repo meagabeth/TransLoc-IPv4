@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS Locations;
+DROP TABLE IF EXISTS heatmap_location;
 
-CREATE TABLE Locations (
+CREATE TABLE heatmap_location (
   id SERIAL NOT NULL,
   latitude FLOAT NOT NULL,
   longitude FLOAT NOT NULL,
@@ -26,7 +26,7 @@ CREATE TEMP TABLE alldata (
 
 \copy alldata FROM './Geolite2-City-Blocks-IPv4.csv' CSV HEADER;
 
-INSERT INTO Locations (latitude, longitude, frequency)
+INSERT INTO heatmap_location (latitude, longitude, frequency)
 SELECT latitude, longitude, Count(*) as frequency
 FROM alldata
 WHERE latitude IS NOT NULL

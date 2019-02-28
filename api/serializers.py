@@ -4,4 +4,4 @@ from heatmap.models import Location
 class LocationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Location
-    fields = ('latitude', 'longitude')
+    fields = ('latitude', 'longitude', 'frequency')
