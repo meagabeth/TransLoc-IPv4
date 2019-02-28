@@ -31,4 +31,6 @@ SELECT latitude, longitude, Count(*) as frequency
 FROM alldata
 WHERE latitude IS NOT NULL
 AND longitude IS NOT NULL
-GROUP BY latitude, longitude;
+GROUP BY latitude, longitude
+
+-- SELECT MAX(frequency) FROM heatmap_location
