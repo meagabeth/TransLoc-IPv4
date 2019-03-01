@@ -1,6 +1,6 @@
 let heat;
 
-let myMap = L.map('mapid').setView([35.99, -78.89], 13);
+let myMap = L.map('mapid').setView([27.9032, -82.2911], 13);
 // map will load on Durham, NC
 
 let initialLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWVhZ2FiZXRoIiwiYSI6ImNqc2t1azZjZzFjdnU0M3FvZjQ1N25oYm4ifQ.qwR8s8TFSdU349SShBi0sw', {
@@ -65,7 +65,13 @@ function addHeat(data) {
 
   if (data) {
     data.forEach(function(coordinate) {
-      addresses.push(Object.values(coordinate))
+      addresses.push([
+        parseFloat(coordinate.latitude),
+        parseFloat(coordinate.longitude),
+        Math.log10(coordinate.frequency)/10
+      ]
+      )
+      // console.log(addresses[0])
       
     });
   }
@@ -73,17 +79,18 @@ function addHeat(data) {
     heat.remove();
   }
 
-  heat = L.heatLayer([[36, -79, 1.0], [35.9, -78.9, .1]], {
-    radius: 100,
+  console.log(addresses[4])
+  heat = L.heatLayer(addresses, {
+    radius: 50,
     blur: 15, 
     minOpacity: .2,
     gradient: {
-      0.1: 'navy',
-      0.2: 'cyan',
-      0.4: 'lime',
-      0.6: 'yellow',
-      0.8: 'orange',
-      1.0: 'red'
+      .2: 'navy',
+      .3: 'cyan',
+      .4: 'lime',
+      .6: 'yellow',
+      .8: 'orange',
+      1.0: 'red',
     }}).addTo(myMap)
 }
 
