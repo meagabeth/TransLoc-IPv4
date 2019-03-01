@@ -1,13 +1,19 @@
-/* * {
-  background-color: #333333;
-} */
-
 h1 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color:#0393ff;
+  text-align: left;
+  margin: 15px;
   
 }
 
-#mapid { 
-  /* width: 400px; */
-  height: 500px; }
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+  text-align: left;
+  margin: 15px;
+}
+
+#mapid {
+  height: 500px;
+  margin: 5px; 
+}

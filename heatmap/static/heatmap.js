@@ -11,19 +11,6 @@ let initialLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}
 }).addTo(myMap);
 
 
-// let heat = L.heatLayer([[35.99, -78.89, .8], [37, -76, .2]] {
-//   radius: 25,
-//   blur: 15, 
-//   minOpacity: .1,
-//   gradient: {
-//     0.1: 'navy',
-//     0.2: 'cyan',
-//     0.4: 'lime',
-//     0.6: 'yellow',
-//     0.8: 'orange',
-//     1.0: 'red'
-//   }}).addTo(myMap)
-
 
 // Returns the geographical bounds visible in the current map view
 function getMapBounds() {
@@ -38,7 +25,7 @@ function getMapBounds() {
 }
 
 
-// Retrieve data from API to establish heat layer on map
+// Retrieve data from API, using the reponse to call addHeat function
 function getIPLocations() {
   let coordinates = getMapBounds();
   console.log(coordinates)
@@ -51,15 +38,9 @@ function getIPLocations() {
 
   })
 }
-    // }).done(function(response) {
-  //   console.log(response[4])
-  //   heat.setLatLngs(response.latitude, response.longitude, response.frequency)
-  //   console.log('What happened?')
-  // })
 
 
-
-
+// Using the response from the 'GET' request to the API, create the heat layer and add to map
 function addHeat(data) {
   let addresses = [];
 
@@ -71,30 +52,27 @@ function addHeat(data) {
         Math.log10(coordinate.frequency)/10
       ]
       )
-      // console.log(addresses[0])
       
     });
   }
+  // If heat layer already exists, remove it before creating again
   if (heat) {
     heat.remove();
   }
 
-  console.log(addresses[4])
+  // Uses data from list of addresses to plot heat points based on gradient scale.
   heat = L.heatLayer(addresses, {
     radius: 25,
     blur: 15, 
     minOpacity: .2,
     gradient: {
-      .1: 'navy',
-      .2: 'cyan',
-      .4: 'green',
-      .6: 'yellow',
-      .8: 'orange',
-      1.0: 'red',
+      .1: 'cyan',
+      .2: 'green',
+      .4: 'yellow',
+      .6: 'orange',
+      .8: 'red',
     }}).addTo(myMap)
 }
-
-// highest frequency should be 1.0 for gradient, lowest should be .1
 
 // Will update map when zoom (in or out) occurs or the user drags the map to a different view
 myMap.on('zoom', getIPLocations)
