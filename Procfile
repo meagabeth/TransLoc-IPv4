@@ -1,0 +1,1 @@
+web: gunicorn transloc-challenge.wsgi --log-file -

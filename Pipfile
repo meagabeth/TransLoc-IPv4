@@ -8,6 +8,9 @@ django = "*"
 djangorestframework = "*"
 "psycopg2" = "*"
 postgres = "*"
+gunicorn = "*"
+django-heroku = "*"
+whitenoise = "*"
 
 [dev-packages]
 
