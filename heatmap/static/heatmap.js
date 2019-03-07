@@ -31,7 +31,7 @@ function getIPLocations() {
   console.log(coordinates)
   $.ajax({
     method: 'GET',
-    url: '/api/'
+    url: '/api/locations'
   }).then(function (response) {
     addHeat(response)
     console.log(response[4].latitude, response[4].longitude, response[4].frequency)

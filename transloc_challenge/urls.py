@@ -18,7 +18,7 @@ from django.conf.urls import url, include
 from django.urls import path, include
 from heatmap import views
 from api import urls as api_urls
-from django.conf import settings
+# from django.conf import settings
 
 urlpatterns = [
     path('', views.index, name='home'),
