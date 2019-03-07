@@ -11,6 +11,7 @@ postgres = "*"
 gunicorn = "*"
 django-heroku = "*"
 whitenoise = "*"
+"psycopg2-binary" = "*"
 
 [dev-packages]
 

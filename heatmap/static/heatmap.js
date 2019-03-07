@@ -49,7 +49,7 @@ function addHeat(data) {
       addresses.push([
         parseFloat(coordinate.latitude),
         parseFloat(coordinate.longitude),
-        Math.log10(coordinate.frequency)/10
+        Math.log10(coordinate.frequency)/100
       ]
       )
       
@@ -66,12 +66,12 @@ function addHeat(data) {
     blur: 15, 
     minOpacity: .3,
     gradient: {
-      .2: 'blue',
-      .3: 'cyan',
-      .4: 'green',
-      .5: 'lime',
-      .6: 'yellow',
-      .7: 'coral',
+      .2: 'purple',
+      .3: 'blue',
+      .4: 'cyan',
+      .5: 'green',
+      .6: 'lime',
+      .7: 'yellow',
       .8: 'orange',
       .9: 'red',
       1.0: 'white',
