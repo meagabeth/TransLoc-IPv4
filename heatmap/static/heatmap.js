@@ -64,15 +64,19 @@ function addHeat(data) {
   heat = L.heatLayer(addresses, {
     radius: 25,
     blur: 15, 
-    minOpacity: .2,
+    minOpacity: .3,
     gradient: {
-      .1: 'cyan',
-      .2: 'green',
-      .4: 'yellow',
-      .6: 'orange',
-      .8: 'red',
+      .2: 'blue',
+      .3: 'cyan',
+      .4: 'green',
+      .5: 'lime',
+      .6: 'yellow',
+      .7: 'coral',
+      .8: 'orange',
+      .9: 'red',
+      1.0: 'white',
     }}).addTo(myMap)
-}
+  };
 
 // Will update map when zoom (in or out) occurs or the user drags the map to a different view
 myMap.on('zoom', getIPLocations)
